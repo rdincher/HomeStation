@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class LandingPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	JButton weather, lights, cal;
+	protected JButton weather, lights, cal;
 	
 	LandingPanel(){
 		setBounds(0,0,480,320);
@@ -27,6 +27,7 @@ public class LandingPanel extends JPanel implements ActionListener {
 		add(weather);
 		add(lights);
 		add(cal);
+		setLayout(null);
 		setVisible(true);
 	}
 

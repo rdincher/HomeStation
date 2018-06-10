@@ -1,15 +1,16 @@
 package gui;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class WeatherPanel extends JPanel implements ActionListener {
+public class LightingPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
+	
 	protected JLabel l;
 	protected JButton back;
 	
-	WeatherPanel(){
+	LightingPanel(){
 		 setBounds(0,0,480,320);
 		 setBackground(Color.gray);
 		 
@@ -29,5 +30,4 @@ public class WeatherPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		FrontPage.actionPerformed(e);
 	}
-	
 }

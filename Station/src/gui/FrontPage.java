@@ -1,20 +1,19 @@
 package gui;
 
 import javax.swing.*;
-
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.*;
 
 public class FrontPage extends JFrame{
 	private static final long serialVersionUID = 1L;
-	static LandingPanel lp = new LandingPanel();
-	static WeatherPanel wp = new WeatherPanel();
-	
+	protected static LandingPanel land = new LandingPanel();
+	protected static WeatherPanel wp = new WeatherPanel();
+	protected static LightingPanel lp = new LightingPanel(); 
 	
 	public FrontPage(){
-		add(lp);
+		add(land);
 		add(wp);
+		add(lp);
 		
 		setLayout(null);
 		setSize(480,320);
@@ -26,13 +25,22 @@ public class FrontPage extends JFrame{
 	}
 	
 	public static void actionPerformed(ActionEvent e) {
-		if(e.getSource() == lp.weather){
+		if(e.getSource() == land.weather){
 			wp.setVisible(true);
-			lp.setVisible(false);
-		} else if(e.getSource() == wp.back){
+			land.setVisible(false);
+		} else if(e.getSource() == land.lights){
 			lp.setVisible(true);
+			land.setVisible(false);
+		}else if(e.getSource() == wp.back){
+			land.setVisible(true);
 			wp.setVisible(false);
+		}else if(e.getSource() == lp.back){
+			land.setVisible(true);
+			lp.setVisible(false);
 		}
-		
+	}
+	
+	public void setWeatherData(String s){
+		wp.l.setText(s);
 	}
 }
