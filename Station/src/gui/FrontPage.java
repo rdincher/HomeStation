@@ -48,11 +48,19 @@ public class FrontPage extends JFrame {
 	public static void callLighting(ActionEvent e) {
 		if (e.getSource() == land.lights) {
 			lp.setVisible(true);
+			s.getLights();
 			land.setVisible(false);
 		} else if (e.getSource() == lp.back) {
 			land.setVisible(true);
 			lp.setVisible(false);
 		}
+	}
+	
+	public void setLights(String[] all){
+		for(int i=0; i < 4; i++){
+			lp.lights[i] = all[i];
+		}
+		lp.setLights();
 	}
 
 	public void setWeatherData(String day, String wind, String hi, String lo, String hum, String fct, Icon im,

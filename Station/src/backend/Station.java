@@ -10,11 +10,23 @@ public class Station {
 	static WeatherData wd;
 	static LightingData ld;
 	
-	public static void main(String[] args) throws JSONException, IOException {
+	public static void main(String[] args) throws Exception {
 		wd = new WeatherData();
 		ld = new LightingData();
 		fp = new gui.FrontPage();
 		
+	}
+	
+	public void getLights(){
+		try {
+			ld.getLights();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected static void setLightList(){
+		fp.setLights(ld.myLights);
 	}
 	
 	public void runWeather() throws JSONException, IOException{

@@ -44,7 +44,6 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		//c.anchor = GridBagConstraints.PAGE_START; // top of space
 		back.setBounds(0, 0, 20, 10);
 		back.addActionListener(this);
 		add(back, c);
