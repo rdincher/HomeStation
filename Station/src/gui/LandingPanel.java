@@ -40,7 +40,8 @@ public class LandingPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FrontPage.actionPerformed(e);
+		FrontPage.callWeather(e);
+		FrontPage.callLighting(e);
 	}
 
 }

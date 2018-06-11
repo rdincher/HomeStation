@@ -28,6 +28,6 @@ public class LightingPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FrontPage.actionPerformed(e);
+		FrontPage.callLighting(e);
 	}
 }

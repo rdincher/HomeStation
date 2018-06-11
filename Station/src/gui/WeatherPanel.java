@@ -161,7 +161,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FrontPage.actionPerformed(e);
+		FrontPage.callWeather(e);
 	}
 
 }

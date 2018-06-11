@@ -27,7 +27,7 @@ public class FrontPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	public static void actionPerformed(ActionEvent e) {
+	public static void callWeather(ActionEvent e) {
 		if (e.getSource() == land.weather) {
 			wp.setVisible(true);
 			// run to get weather data
@@ -39,12 +39,16 @@ public class FrontPage extends JFrame {
 				e1.printStackTrace();
 			}
 			land.setVisible(false);
-		} else if (e.getSource() == land.lights) {
-			lp.setVisible(true);
-			land.setVisible(false);
-		} else if (e.getSource() == wp.back) {
+		}  else if (e.getSource() == wp.back) {
 			land.setVisible(true);
 			wp.setVisible(false);
+		} 
+	}
+	
+	public static void callLighting(ActionEvent e) {
+		if (e.getSource() == land.lights) {
+			lp.setVisible(true);
+			land.setVisible(false);
 		} else if (e.getSource() == lp.back) {
 			land.setVisible(true);
 			lp.setVisible(false);

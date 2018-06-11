@@ -8,9 +8,11 @@ public class Station {
 	
 	static gui.FrontPage fp;
 	static WeatherData wd;
+	static LightingData ld;
 	
 	public static void main(String[] args) throws JSONException, IOException {
 		wd = new WeatherData();
+		ld = new LightingData();
 		fp = new gui.FrontPage();
 		
 	}
