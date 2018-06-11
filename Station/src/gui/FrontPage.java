@@ -40,7 +40,14 @@ public class FrontPage extends JFrame{
 		}
 	}
 	
-	public void setWeatherData(String s){
-		wp.l.setText(s);
+	public void setWeatherData(String day, String wind, String hi, String lo, String hum, String fct, Icon im){
+		wp.dayData.setText(day);
+		wp.windData.setText(wind);
+		wp.highData.setText(hi);
+		wp.lowData.setText(lo);
+		wp.humidityData.setText(hum);
+		wp.picData.setIcon(im);
+		wp.condData.setText(fct);
+		wp.picData.setText("");
 	}
 }

@@ -2,11 +2,12 @@ package gui;
 
 import java.awt.Color;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class LandingPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	protected JButton weather, lights, cal;
+	protected JButton weather, lights, cal, other;
 	
 	LandingPanel(){
 		setBounds(0,0,480,320);
@@ -24,9 +25,15 @@ public class LandingPanel extends JPanel implements ActionListener {
 		cal.setBounds(210, 10, 100, 100);
 		cal.addActionListener(this);
 		
+		//other = new JButton(new ImageIcon(url));
+		//other.setBounds(310, 10, 100, 100);
+		//other.addActionListener(this);
+		
 		add(weather);
 		add(lights);
 		add(cal);
+		//add(other);
+		
 		setLayout(null);
 		setVisible(true);
 	}
