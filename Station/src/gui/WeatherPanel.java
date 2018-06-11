@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class WeatherPanel extends JPanel implements ActionListener {
@@ -13,9 +14,8 @@ public class WeatherPanel extends JPanel implements ActionListener {
 	final static boolean shouldWeightX = true;
 	final static boolean RIGHT_TO_LEFT = false;
 	protected JLabel day, high, low, humidity, wind, cond, pic;
-	protected JLabel dayData, highData, lowData, humidityData, windData, condData, picData;
-	protected JLabel dayData1, highData1, lowData1, humidityData1, windData1, condData1, picData1;
-	protected JLabel dayData2, highData2, lowData2, humidityData2, windData2, condData2, picData2;
+	protected JLabel[] dayData, highData, lowData, humidityData, windData, condData, picData;
+
 	protected JButton back;
 	GridLayout gl = new GridLayout(3, 7);
 
@@ -25,9 +25,14 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		GridBagConstraints c = new GridBagConstraints();
 		setBounds(0, 0, 480, 320);
 		setBackground(Color.gray);
-
+		dayData = new JLabel[3]; highData = new JLabel[3]; lowData = new JLabel[3];
+		humidityData = new JLabel[3]; windData = new JLabel[3]; condData = new JLabel[3];
+		picData = new JLabel[3];
+		
 		setHeader(c);
-		setData(c);
+		for(int i = 0; i < 3; i++){
+			setData(c, i);
+		}
 		
 		setVisible(false);
 	}
@@ -36,7 +41,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		back = new JButton("<-");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 1;
+		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
 		//c.anchor = GridBagConstraints.PAGE_START; // top of space
@@ -47,7 +52,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		day = new JLabel("Day");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 2;
+		c.gridx = 0;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.PAGE_START; // top of space
 		add(day, c);
@@ -55,7 +60,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		high = new JLabel("High");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 3;
+		c.gridx = 1;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.PAGE_START; // top of space
 		add(high, c);
@@ -63,7 +68,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		low = new JLabel("Low");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 4;
+		c.gridx = 2;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.PAGE_START; // top of space
 		add(low, c);
@@ -71,7 +76,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		humidity = new JLabel("Humid");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 5;
+		c.gridx = 3;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.PAGE_START; // top of space
 		add(humidity, c);
@@ -79,7 +84,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		wind = new JLabel("Wind");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 6;
+		c.gridx = 4;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.PAGE_START; // top of space
 		add(wind, c);
@@ -87,7 +92,7 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		cond = new JLabel("Conditions");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 7;
+		c.gridx = 5;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.PAGE_START; // top of space
 		add(cond, c);
@@ -101,57 +106,57 @@ public class WeatherPanel extends JPanel implements ActionListener {
 		add(pic, c);*/
 	}
 
-	private void setData(GridBagConstraints c){
+	private void setData(GridBagConstraints c, int index){
 
 
-		dayData = new JLabel("dayData");
+		dayData[index] = new JLabel("dayData");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		c.gridx = 0;
+		c.gridy = index + 3;
+		add(dayData[index], c);
+		
+		highData[index] = new JLabel("HighData");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		c.gridx = 1;
+		c.gridy = index + 3;
+		add(highData[index], c);
+		
+		lowData[index] = new JLabel("LowData");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
 		c.gridx = 2;
-		c.gridy = 2;
-		add(dayData, c);
+		c.gridy = index + 3;
+		add(lowData[index], c);
 		
-		highData = new JLabel("HighData");
+		humidityData[index] = new JLabel("HumidData");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
 		c.gridx = 3;
-		c.gridy = 2;
-		add(highData, c);
+		c.gridy = index + 3;
+		add(humidityData[index], c);
 		
-		lowData = new JLabel("LowData");
+		windData[index] = new JLabel("WindData");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
 		c.gridx = 4;
-		c.gridy = 2;
-		add(lowData, c);
+		c.gridy = index + 3;
+		add(windData[index], c);
 		
-		humidityData = new JLabel("HumidData");
+		condData[index] = new JLabel("ConditionsData");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
 		c.gridx = 5;
-		c.gridy = 2;
-		add(humidityData, c);
+		c.gridy = index + 3;
+		add(condData[index], c);
 		
-		windData = new JLabel("WindData");
+		picData[index] = new JLabel("Test");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
 		c.gridx = 6;
-		c.gridy = 2;
-		add(windData, c);
-		
-		condData = new JLabel("ConditionsData");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 7;
-		c.gridy = 2;
-		add(condData, c);
-		
-		picData = new JLabel("Test");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 8;
-		c.gridy = 2;
-		add(picData, c);
+		c.gridy = index + 3;
+		add(picData[index], c);
 	}
 	
 	@Override
