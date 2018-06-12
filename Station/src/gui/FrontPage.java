@@ -62,6 +62,18 @@ public class FrontPage extends JFrame {
 		}
 		lp.setLights();
 	}
+	
+	public static void turnOnLight(int num){
+		s.turnOnLight(num);
+	}
+	
+	public static void turnOffLight(int num){
+		s.turnOffLight(num);
+	}
+	
+	public static void discoLights(){
+		s.discoLight();
+	}
 
 	public void setWeatherData(String day, String wind, String hi, String lo, String hum, String fct, Icon im,
 			int rec) {

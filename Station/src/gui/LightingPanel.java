@@ -19,39 +19,23 @@ public class LightingPanel extends JPanel implements ActionListener {
 
 	@SuppressWarnings("unchecked")
 	protected void setUp() {
-		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		setLayout(null);
 		setBounds(0, 0, 480, 320);
 		setBackground(Color.gray);
 
 		back = new JButton("Back");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 0;
-		c.gridy = 0;
-		c.anchor = GridBagConstraints.NORTH;
-		// c.anchor = GridBagConstraints.PAGE_START; // top of space
-		back.setBounds(0, 0, 20, 10);
+		back.setBounds(0, 0, 75, 30);
 		back.addActionListener(this);
-		add(back, c);
+		add(back);
 		
 		lightLabel.setText(null);
-		lightLabel.setHorizontalAlignment(JLabel.CENTER);
-		lightLabel.setSize(400, 100);
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 1;
-		c.gridy = 0;
-		c.anchor = GridBagConstraints.NORTH;
-		add(lightLabel, c);
+		lightLabel.setHorizontalAlignment(JLabel.LEFT);
+		lightLabel.setBounds(225, 50, 175, 20);
+		add(lightLabel);
 		
 		JButton b = new JButton("Show");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 2;
-		c.gridy = 0;
-		c.anchor = GridBagConstraints.NORTH;
-		add(b, c);
+		b.setBounds(300, 0, 75, 30);
+		add(b);
 		
 		lights = new String[4];
 		for (int i = 0; i <= 3; i++) {
@@ -60,19 +44,46 @@ public class LightingPanel extends JPanel implements ActionListener {
 		}
 		
 		
-		cb.setBounds(50, 100, 90, 20);
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 0;
-		c.gridy = 1;
-		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		add(cb, c);
-		
+		cb.setBounds(0, 50, 175, 20);
+		add(cb);
 		
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String data = (String) cb.getItemAt(cb.getSelectedIndex());
 				lightLabel.setText(data);
+			}
+		});
+		
+		JButton on = new JButton("On");
+		on.setBounds(100, 0, 50, 30);
+		add(on);
+		JButton off = new JButton("Off");
+		off.setBounds(150, 0, 50, 30);
+		add(off);
+		JButton disco = new JButton("DISCO");
+		disco.setBounds(200, 0, 75, 30);
+		add(disco);
+		
+		on.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int ind = cb.getSelectedIndex();
+				lightLabel.setText(Integer.toString(ind));
+				FrontPage.turnOnLight(ind);
+			}
+		});
+		
+		off.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int ind = cb.getSelectedIndex();
+				lightLabel.setText(Integer.toString(ind));
+				FrontPage.turnOffLight(ind);
+			}
+		});
+		
+		disco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lightLabel.setText("Disco");
+				FrontPage.discoLights();
 			}
 		});
 		
