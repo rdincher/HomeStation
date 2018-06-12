@@ -87,6 +87,8 @@ public class LightingPanel extends JPanel implements ActionListener {
 			}
 		});
 		
+		//TODO: Add Brightness Slider
+		
 		setVisible(false);
 	}
 

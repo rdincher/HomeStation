@@ -41,4 +41,7 @@ public class LightingData {
 		hc.sendPut("http://192.168.2.5/api/NNNcEcM5gL2AN7EnHzXbyLQkSzg6kwAF0y83DGip/groups/0/action",
 				"{\"effect\":\"none\"}");
 	}
+	
+	//TODO: Add Brightness Control
+	
 }

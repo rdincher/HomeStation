@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+//Swing Tutorial can be found at https://www.javatpoint.com/java-swing
+
 public class FrontPage extends JFrame {
 	private static final long serialVersionUID = 1L;
 	protected static LandingPanel land = new LandingPanel();
